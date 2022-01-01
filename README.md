@@ -23,3 +23,4 @@ cd keyplays
 - [ ] Settings:
   - [ ] Mouse movements absolute / relative
 - [ ] Save inputs to file
+- [ ] Adjustable inputs per second (IPS)
