@@ -7,3 +7,4 @@ set_property(TARGET keyplays PROPERTY CXX_STANDARD 20)
 target_include_directories(keyplays PUBLIC src)
 
 add_subdirectory(src)
+add_subdirectory(vendor)
