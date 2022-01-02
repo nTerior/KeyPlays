@@ -3,12 +3,15 @@ A simple program to record and play keyboard and mouse inputs at will
 
 ## Installation
 ### Windows
-**Not supported yet**
+**Currently not supported**
 
 ### macOS
-**Not supported yet**
+**Currently not supported**
 
 ### Linux
+#### Requirements
+- xcb (**Only X11 is being supported**)
+
 ```bash
 git clone https://github.com/cephox/keyplays
 cd keyplays
