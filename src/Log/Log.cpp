@@ -9,5 +9,7 @@ namespace KeyPlays {
     s_Logger = spdlog::stdout_color_mt("KeyPlays");
     s_Logger->set_pattern("%^[%T] %n: %v%$");
     s_Logger->set_level(spdlog::level::trace);
+
+    KP_TRACE("Logger initialized");
   }
 } // namespace KeyPlays
