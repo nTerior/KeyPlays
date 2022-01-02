@@ -13,6 +13,9 @@ namespace KeyPlays::Events {
   KeyEvent::KeyEvent(uint32_t keycode, TimePoint timepoint): IInputEvent(timepoint), m_Keycode(keycode) {}
   uint32_t KeyEvent::GetKeyCode() { return m_Keycode; }
 
+  KeyPressedEvent::KeyPressedEvent(uint32_t keycode, TimePoint timepoint): KeyEvent(keycode, timepoint) {}
+  KeyReleasedEvent::KeyReleasedEvent(uint32_t keycode, TimePoint timepoint): KeyEvent(keycode, timepoint) {}
+
   std::vector<IInputEvent> IInputEventHandler::GetDispatchedEvents() { return m_DispatchedEvents; }
   void IInputEventHandler::ClearDispatchedEvents() { m_DispatchedEvents.clear(); }
 

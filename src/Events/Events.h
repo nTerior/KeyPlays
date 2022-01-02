@@ -27,6 +27,16 @@ namespace KeyPlays::Events {
     uint32_t m_Keycode;
   };
 
+  class KeyPressedEvent : public KeyEvent {
+  public:
+    KeyPressedEvent(uint32_t keycode, TimePoint timepoint);
+  };
+
+  class KeyReleasedEvent : public KeyEvent {
+  public:
+    KeyReleasedEvent(uint32_t keycode, TimePoint timepoint);
+  };
+
   class IInputEventHandler {
   public:
     virtual void Init() = 0;
