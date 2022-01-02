@@ -77,11 +77,11 @@ namespace KeyPlays::Events {
           if(cookie->evtype == XI_RawKeyPress) {
             KP_TRACE("Detected keypress");
             // TODO: correct timepoint
-            m_DispatchedEvents.push_back(KeyPressedEvent(evt->detail, std::chrono::high_resolution_clock::now()));
+            //m_DispatchedEvents.push_back(KeyPressedEvent(evt->detail, std::chrono::high_resolution_clock::now()));
           } else if(cookie->evtype == XI_RawKeyRelease) {
             KP_TRACE("Detected keyrelease");
             // TODO: correct timepoint
-            m_DispatchedEvents.push_back(KeyReleasedEvent(evt->detail, std::chrono::high_resolution_clock::now()));
+            //m_DispatchedEvents.push_back(KeyReleasedEvent(evt->detail, std::chrono::high_resolution_clock::now()));
           }
         }
       }
