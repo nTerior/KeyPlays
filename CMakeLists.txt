@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(KeyPlays VERSION 1.0 LANGUAGES CXX)
+project(KeyPlays VERSION 1.0 LANGUAGES CXX C)
 
 add_executable(keyplays)
 set_property(TARGET keyplays PROPERTY CXX_STANDARD 20)
