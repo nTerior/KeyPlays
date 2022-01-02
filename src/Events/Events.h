@@ -1,50 +1,41 @@
 #pragma once
 
+#include "Timer/Timer.h"
+
 #include <chrono>
 #include <cstdint>
-#include <thread>
 
 namespace KeyPlays::Events {
-  typedef std::chrono::time_point<std::chrono::high_resolution_clock> TimePoint;
+  
+  enum EventType {
+    KeyPressed = 0,
+    KeyReleased,
+    MousePressed,
+    MouseReleased
+  };
 
-  // Simple interface class for InputEvents
-  // Only contains timepoint, other attribu
-  class IInputEvent {
+  class InputEvent {
   public:
-    IInputEvent(TimePoint timepoint);
+    InputEvent(EventType type, uint32_t data, long timepoint);
 
-    TimePoint GetTimePoint();
+    EventType GetEventType();
+    // Returns keycode if KeyPressed/-Released or mouse button
+    uint32_t GetData();
+    long GetTimePoint();
   protected:
-    TimePoint m_TimePoint;
-  };
-
-  class KeyEvent : public IInputEvent {
-  public:
-    KeyEvent(uint32_t keycode, TimePoint timepoint);
-
-    uint32_t GetKeyCode();
-  private:
-    uint32_t m_Keycode;
-  };
-
-  class KeyPressedEvent : public KeyEvent {
-  public:
-    KeyPressedEvent(uint32_t keycode, TimePoint timepoint);
-  };
-
-  class KeyReleasedEvent : public KeyEvent {
-  public:
-    KeyReleasedEvent(uint32_t keycode, TimePoint timepoint);
+    EventType m_Type;
+    uint32_t m_Data;
+    long m_TimePoint;
   };
 
   class IInputEventHandler {
   public:
     virtual void Init() = 0;
     virtual void CaptureInputs() = 0;
-    std::vector<IInputEvent> GetDispatchedEvents();
+    std::vector<InputEvent> GetDispatchedEvents();
     void ClearDispatchedEvents();
   protected:
-    std::vector<IInputEvent> m_DispatchedEvents;
+    std::vector<InputEvent> m_DispatchedEvents;
   };
 
   // Sets the correct InputHandlers per platform

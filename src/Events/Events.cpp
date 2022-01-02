@@ -6,17 +6,15 @@
   #error "Platform not supported"
 #endif
 
+#include <thread>
+
 namespace KeyPlays::Events {
-  IInputEvent::IInputEvent(TimePoint timepoint): m_TimePoint(timepoint) {}
-  TimePoint IInputEvent::GetTimePoint() { return m_TimePoint; }
+  InputEvent::InputEvent(EventType type, uint32_t data, long timepoint): m_Type(type), m_Data(data), m_TimePoint(timepoint) {}
+  EventType InputEvent::GetEventType() { return m_Type; }
+  uint32_t InputEvent::GetData() { return m_Data; }
+  long InputEvent::GetTimePoint() { return m_TimePoint; }
 
-  KeyEvent::KeyEvent(uint32_t keycode, TimePoint timepoint): IInputEvent(timepoint), m_Keycode(keycode) {}
-  uint32_t KeyEvent::GetKeyCode() { return m_Keycode; }
-
-  KeyPressedEvent::KeyPressedEvent(uint32_t keycode, TimePoint timepoint): KeyEvent(keycode, timepoint) {}
-  KeyReleasedEvent::KeyReleasedEvent(uint32_t keycode, TimePoint timepoint): KeyEvent(keycode, timepoint) {}
-
-  std::vector<IInputEvent> IInputEventHandler::GetDispatchedEvents() { return m_DispatchedEvents; }
+  std::vector<InputEvent> IInputEventHandler::GetDispatchedEvents() { return m_DispatchedEvents; }
   void IInputEventHandler::ClearDispatchedEvents() { m_DispatchedEvents.clear(); }
 
   void Init() {
