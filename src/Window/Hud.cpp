@@ -5,7 +5,17 @@
 namespace KeyPlays::Window {
   void RenderHud() {
     CreateGlobalDockSpace();
+
+    ImGui::Begin("KeyPlays");
+    ImGui::End();
+
+    ImGui::Begin("Log");
+    // Log of pressed / released keys
+    ImGui::End();
     
+    ImGui::Begin("Settings");
+    // Settings
+    ImGui::End();
   }
   void ApplyStyle() {
     ImGuiStyle & style = ImGui::GetStyle();

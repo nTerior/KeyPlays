@@ -17,7 +17,7 @@ namespace KeyPlays::Window {
 
     if(!glfwInit()) std::exit(-1);
 
-    GLFWwindow* window = glfwCreateWindow(1080, 720, "KeyPlays", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(720, 720, "KeyPlays", NULL, NULL);
     if(window == NULL) {
       std::exit(-1);
     }
