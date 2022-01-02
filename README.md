@@ -13,6 +13,7 @@ A simple program to record and play keyboard and mouse inputs at will
 git clone https://github.com/cephox/keyplays
 cd keyplays
 ./build Release
+cp Release/keyplays .
 ```
 
 ## Features
