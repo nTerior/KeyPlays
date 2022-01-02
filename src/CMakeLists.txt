@@ -5,3 +5,5 @@ target_sources(keyplays PUBLIC
 )
 
 target_precompile_headers(keyplays PUBLIC keyplays.h)
+
+add_subdirectory(Platform)

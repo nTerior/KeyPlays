@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <cstdint>
+#include <thread>
 
 namespace KeyPlays::Events {
   typedef std::chrono::time_point<std::chrono::high_resolution_clock> TimePoint;
@@ -28,12 +29,12 @@ namespace KeyPlays::Events {
 
   class IInputEventHandler {
   public:
-    IInputEventHandler();
-    virtual ~IInputEventHandler();
-
-    // To be done by platform
-    virtual void Initialize() = 0;
-    virtual void CaptureInputs(std::vector<IInputEvent>* eventList) = 0;
+    virtual void Init() = 0;
+    virtual void CaptureInputs() = 0;
+    std::vector<IInputEvent> GetDispatchedEvents();
+    void ClearDispatchedEvents();
+  protected:
+    std::vector<IInputEvent> m_DispatchedEvents;
   };
 
   // Sets the correct InputHandlers per platform
