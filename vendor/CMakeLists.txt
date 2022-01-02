@@ -18,7 +18,6 @@ target_link_libraries(keyplays PUBLIC OpenGL::GL)
 target_include_directories(keyplays PUBLIC imgui imgui/backends)
 target_sources(keyplays PUBLIC
   imgui/imgui.cpp
-  imgui/imgui_demo.cpp
   imgui/imgui_draw.cpp
   imgui/imgui_tables.cpp
   imgui/imgui_widgets.cpp

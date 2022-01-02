@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "Hud.h"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -29,8 +30,6 @@ namespace KeyPlays::Window {
     ImGuiIO& io = ImGui::GetIO();
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-    
-    ImGui::StyleColorsDark();
 
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init();
@@ -38,6 +37,8 @@ namespace KeyPlays::Window {
     bool show_demo_window = true;
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+    ApplyStyle();
 
     // Main loop
     while (!glfwWindowShouldClose(window))
@@ -48,7 +49,7 @@ namespace KeyPlays::Window {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        // TODO: ImGui Stuff
+        RenderHud();
 
         // Rendering
         ImGui::Render();

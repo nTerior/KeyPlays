@@ -3,6 +3,7 @@ target_sources(keyplays PUBLIC
   Log/Log.cpp
   Events/Events.cpp
   Window/Window.cpp
+  Window/Hud.cpp
 )
 
 target_precompile_headers(keyplays PUBLIC keyplays.h)
