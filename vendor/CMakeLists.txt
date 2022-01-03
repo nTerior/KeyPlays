@@ -15,8 +15,9 @@ find_package(OpenGL REQUIRED)
 target_link_libraries(keyplays PUBLIC OpenGL::GL)
 
 # -- ImGui --
+
 target_include_directories(keyplays PUBLIC imgui imgui/backends)
-target_sources(keyplays PUBLIC
+add_library(imgui STATIC
   imgui/imgui.cpp
   imgui/imgui_draw.cpp
   imgui/imgui_tables.cpp
@@ -24,4 +25,5 @@ target_sources(keyplays PUBLIC
   imgui/backends/imgui_impl_glfw.cpp
   imgui/backends/imgui_impl_opengl3.cpp
 )
-target_link_libraries(keyplays PUBLIC dl)
+target_include_directories(imgui PUBLIC imgui imgui/backends)
+target_link_libraries(keyplays PUBLIC dl imgui)
