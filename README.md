@@ -10,7 +10,8 @@ A simple program to record and play keyboard and mouse inputs at will
 
 ### Linux
 #### Requirements
-- xcb (**Only X11 is being supported**)
+- X11 (Wayland is not supported)
+- Xi (X11 extensions) -> needed for Inputs
 
 ```bash
 git clone https://github.com/cephox/keyplays
