@@ -1,4 +1,5 @@
 #include "Hud.h"
+#include "Capture/Capture.h"
 
 #include "imgui.h"
 
@@ -7,6 +8,9 @@ namespace KeyPlays::Window {
     CreateGlobalDockSpace();
 
     ImGui::Begin("KeyPlays");
+		if(ImGui::Button(Capture::recording ? "Stop Recording" : "Start Recording")) {
+			Capture::recording = !Capture::recording;
+		}
     ImGui::End();
 
     ImGui::Begin("Log");

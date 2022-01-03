@@ -12,7 +12,7 @@ namespace KeyPlays::Events {
     void CaptureInputs() override;
   private:
     Display *m_Display;
-    Window m_RootWindow;
+    ::Window m_RootWindow;
     int m_XiCode;
   };
 } // namespace KeyPlays::Events

@@ -1,10 +1,5 @@
 #include "Events/Events.h"
-
-#ifdef KP_PLATFORM_LINUX
-  #include "Platform/Linux/Events/Events.h"
-#else
-  #error "Platform not supported"
-#endif
+#include "Capture/Capture.h"
 
 #include <thread>
 
@@ -18,20 +13,10 @@ namespace KeyPlays::Events {
   void IInputEventHandler::ClearDispatchedEvents() { m_DispatchedEvents.clear(); }
 
   void Init() {
-    #ifdef KP_PLATFORM_LINUX
-    KP_INFO("Initializing event handler for Linux.");
-    LinuxInputEventHandler* evtHandler = new LinuxInputEventHandler();
-    // For other platforms:
-    /*
-    #elif defined(KP_PLATFORM_{platform})
-    KP_INFO("Initializing event handler for {Platform}.");
-    {Platform}InputEventHandler* evtHandler = new {Platform}InputEventHandler();
-    */
-    // It is **IMPORTANT** to name your created InputEventHandler variable **EXACTLY** evtHandler !!!
-    #endif
-
-    evtHandler->Init();
-    std::thread thread(&IInputEventHandler::CaptureInputs, evtHandler);
+    // Setting the event handler: Capture/Capture.h
+    Capture::eventHandler.Init();
+    
+    std::thread thread(&IInputEventHandler::CaptureInputs, Capture::eventHandler);
     thread.detach();
   }
 } // namespace KeyPlays::Events

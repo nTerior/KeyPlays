@@ -1,4 +1,5 @@
 #include "Platform/Linux/Events/Events.h"
+#include "Capture/Capture.h"
 
 #include <cstdlib>
 
@@ -74,6 +75,7 @@ namespace KeyPlays::Events {
         if(cookie->type == GenericEvent && cookie->extension == m_XiCode) {
           XIRawEvent* evt = (XIRawEvent*) cookie->data;
           // Keyboard events
+          if(!Capture::recording) continue;
           if(cookie->evtype == XI_RawKeyPress) {
             KP_TRACE("Detected keypress");
             m_DispatchedEvents.push_back(InputEvent(EventType::KeyPressed, evt->detail, Timer::GetCurrentDeltaTime()));
