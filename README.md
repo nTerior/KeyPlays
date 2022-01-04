@@ -21,11 +21,10 @@ cp Release/keyplays .
 ```
 
 ## Features
-- [ ] Record keyboard inputs
+- [x] Record keyboard inputs
 - [ ] Play recorded keyboard inputs
 - [ ] Record mouse inputs
 - [ ] Play recorded mouse inputs
 - [ ] Settings:
   - [ ] Mouse movements absolute / relative
 - [ ] Save inputs to file
-- [ ] Adjustable inputs per second (IPS)
