@@ -32,10 +32,6 @@ namespace KeyPlays::Events {
   public:
     virtual void Init() = 0;
     virtual void CaptureInputs() = 0;
-    std::vector<InputEvent> GetDispatchedEvents();
-    void ClearDispatchedEvents();
-  protected:
-    std::vector<InputEvent> m_DispatchedEvents;
   };
 
   // Sets the correct InputHandlers per platform

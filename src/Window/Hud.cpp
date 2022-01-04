@@ -5,21 +5,41 @@
 
 namespace KeyPlays::Window {
   void RenderHud() {
+		using namespace std::string_literals;
+
     CreateGlobalDockSpace();
 
     ImGui::Begin("KeyPlays");
 		if(ImGui::Button(Capture::recording ? "Stop Recording" : "Start Recording")) {
+			// When starting
+			if(!Capture::recording) {
+				Timer::Reset();
+				Capture::dispatchedEvents.clear();
+			}
+
 			Capture::recording = !Capture::recording;
 		}
     ImGui::End();
 
     ImGui::Begin("Log");
-    // Log of pressed / released keys
+    ImGui::BeginChild("log_scrolling_area", ImVec2(), false, ImGuiWindowFlags_HorizontalScrollbar);
+
+		// Log
+		for(auto entry : Capture::dispatchedEvents) {
+			ImGui::Text("[%s] %.2fs", entry.GetEventType() == Events::EventType::KeyPressed ? "Key Pressed" : "Key Released", entry.GetTimePoint() * 0.001f * 0.001f * 0.001f);
+		}
+
+		// Autoscrolling
+		if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY())
+    	ImGui::SetScrollHereY(1.0f);
+
+		ImGui::EndChild();
     ImGui::End();
     
     ImGui::Begin("Settings");
     // Settings
     ImGui::End();
+
   }
   void ApplyStyle() {
     ImGuiStyle & style = ImGui::GetStyle();

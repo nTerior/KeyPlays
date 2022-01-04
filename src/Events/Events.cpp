@@ -9,9 +9,6 @@ namespace KeyPlays::Events {
   uint32_t InputEvent::GetData() { return m_Data; }
   long InputEvent::GetTimePoint() { return m_TimePoint; }
 
-  std::vector<InputEvent> IInputEventHandler::GetDispatchedEvents() { return m_DispatchedEvents; }
-  void IInputEventHandler::ClearDispatchedEvents() { m_DispatchedEvents.clear(); }
-
   void Init() {
     // Setting the event handler: Capture/Capture.h
     Capture::eventHandler.Init();

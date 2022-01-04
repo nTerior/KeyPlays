@@ -22,6 +22,8 @@ namespace KeyPlays::Capture {
   #endif
   eventHandler;
 
+  extern std::vector<Events::InputEvent> dispatchedEvents;
+
   extern bool recording;
   extern bool playing;
 } // namespace KeyPlays::Capture

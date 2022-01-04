@@ -78,10 +78,10 @@ namespace KeyPlays::Events {
           if(!Capture::recording) continue;
           if(cookie->evtype == XI_RawKeyPress) {
             KP_TRACE("Detected keypress");
-            m_DispatchedEvents.push_back(InputEvent(EventType::KeyPressed, evt->detail, Timer::GetCurrentDeltaTime()));
+            Capture::dispatchedEvents.push_back(InputEvent(EventType::KeyPressed, evt->detail, Timer::GetCurrentDeltaTime()));
           } else if(cookie->evtype == XI_RawKeyRelease) {
             KP_TRACE("Detected keyrelease");
-            m_DispatchedEvents.push_back(InputEvent(EventType::KeyReleased, evt->detail, Timer::GetCurrentDeltaTime()));
+            Capture::dispatchedEvents.push_back(InputEvent(EventType::KeyReleased, evt->detail, Timer::GetCurrentDeltaTime()));
           }
         }
       }
